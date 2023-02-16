@@ -45,13 +45,16 @@ void ofApp::draw() {
 
     // ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
 }
+
 void ofApp::drawMode1(vector<float> amplitudes) {
     ofFill();        // Drawn Shapes will be filled in with color
     ofSetColor(256); // This resets the color of the "brush" to white
     ofDrawBitmapString("Rectangle Height Visualizer", 0, 15);
     ofSetColor(189, 45, 135);
     ofDrawRectangle(2, ofGetHeight() - 100, 50, amplitudes[0]);
+    ofSetBackgroundColor(255, 182, 193); // Background color for mode 1
 }
+
 void ofApp::drawMode2(vector<float> amplitudes) {
     ofSetLineWidth(5); // Sets the line width
     ofNoFill();        // Only the outline of shapes will be drawn
@@ -62,12 +65,14 @@ void ofApp::drawMode2(vector<float> amplitudes) {
         ofSetColor((bands - i) * 32 % 256, 18, 144); // Color varies between frequencies
         ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, amplitudes[0] / (i + 1));
     }
+    ofSetBackgroundColor(203, 195, 250); // Background color for mode 2
 }
 
 void ofApp::drawMode3(vector<float> amplitudes) {
     ofSetColor(256); // This resets the color of the "brush" to white
     ofDrawBitmapString("Rectangle Width Visualizer", 0, 15);
     // YOUR CODE HERE
+    ofSetBackgroundColor(144, 238, 144); // Background color for mode 3
 }
 
 //--------------------------------------------------------------
