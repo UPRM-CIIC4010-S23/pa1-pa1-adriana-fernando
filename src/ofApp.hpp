@@ -11,6 +11,7 @@ class ofApp : public ofBaseApp {
 
     bool playing = false;
     char mode = '1';
+    bool pause = false;
 
     int cur_x, cur_y = 0;
     float sound_length;
