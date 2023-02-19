@@ -31,6 +31,7 @@ void ofApp::draw() {
     float pos = playing ? progress : lastPos;
     int percent = pos * 100;
     ofDrawBitmapString("Song Progress: " + ofToString(percent) + "%", 0, 30);
+    ofDrawBitmapString("Press 'd' to change song!", 0, 45);
 
     // Mode Selection
     if (!playing) {
@@ -96,6 +97,24 @@ void ofApp::keyPressed(int key) {
             pause = true;
         }
         break;
+    case 'd': // When pressing 'd' changes song
+        if (song == '6') {
+            sound.load("geesebeat.wav");
+            sound.play();
+            song = '7';
+        } else if (song == '7') {
+            sound.load("pigeon-coo.wav");
+            sound.play();
+            song = '8';
+        } else if (song == '8') {
+            sound.load("rock-song.wav");
+            sound.play();
+            song = '9';
+        } else if (song == '9') {
+            sound.load("beat.wav");
+            sound.play();
+            song = '6';
+        }
     case '1':
         mode = '1';
         break;
