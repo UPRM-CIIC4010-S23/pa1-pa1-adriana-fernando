@@ -54,7 +54,14 @@ void ofApp::drawMode1(vector<float> amplitudes) {
     ofSetColor(256); // This resets the color of the "brush" to white
     ofDrawBitmapString("Rectangle Height Visualizer", 0, 15);
     ofSetColor(0,0,ofRandom(25,255));  // rectangle's color changes to different shades of blue :)
-    ofDrawRectRounded(2, ofGetHeight() - 100, 50, amplitudes[0], 10); //rounded rectangle's corners :)
+    int i = 0;
+    for (int j = 2; j < 1000; j += 15) { //draws more rectangles
+        ofDrawRectRounded(j, ofGetHeight() - 100, 15, amplitudes[i], 10);
+        if (i < 65) {
+            i = i + 1;
+        }
+    }
+    // ofDrawRectRounded(2, ofGetHeight() - 100, 20, amplitudes[0], 10); //rounded rectangle's corners :)
     ofSetBackgroundColor(255, 182, 193); // Background color for mode 1
 }
 
