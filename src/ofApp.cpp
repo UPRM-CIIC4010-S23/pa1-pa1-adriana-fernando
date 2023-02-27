@@ -46,6 +46,25 @@ void ofApp::draw() {
         drawMode3(amplitudes);
     }
 
+    if (loop) {
+        if (song == '6' && percent == 99) {
+            sound.load("geesebeat.wav");
+            sound.play();
+            song = '7';
+        } else if (song == '7' && percent == 99) {
+            sound.load("pigeon-coo.wav");
+            sound.play();
+            song = '8';
+        } else if (song == '8' && percent == 99) {
+            sound.load("rock-song.wav");
+            sound.play();
+            song = '9';
+        } else if (song == '9' && percent == 99) {
+            sound.load("beat.wav");
+            sound.play();
+            song = '6';
+        }
+    }
     // ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
 }
 
@@ -104,22 +123,34 @@ void ofApp::keyPressed(int key) {
             pause = true;
         }
         break;
+    case 'l':
+        if (loop) {
+            loop = false;
+            break;
+        } else {
+            loop = true;
+        }
+        break;
     case 'd': // When pressing 'd' changes song
         if (song == '6') {
             sound.load("geesebeat.wav");
             sound.play();
+            sound.setLoop(true);
             song = '7';
         } else if (song == '7') {
             sound.load("pigeon-coo.wav");
             sound.play();
+            sound.setLoop(true);
             song = '8';
         } else if (song == '8') {
             sound.load("rock-song.wav");
             sound.play();
+            sound.setLoop(true);
             song = '9';
         } else if (song == '9') {
             sound.load("beat.wav");
             sound.play();
+            sound.setLoop(true);
             song = '6';
         }
     case '1':
