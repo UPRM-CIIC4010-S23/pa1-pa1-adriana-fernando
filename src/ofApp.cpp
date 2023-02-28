@@ -161,7 +161,7 @@ void ofApp::keyPressed(int key) {
         else if ( sound.getVolume() == 1.0) { break; }
         break;
     
-    case '-': // lowers the volume :/ not working properly
+    case '-': // lowers the volume *fixed
         if (sound.getVolume() > 0.0) { sound.setVolume(sound.getVolume() - 0.1); }
         if (sound.getVolume() < 0) sound.setVolume(0);
         break;
