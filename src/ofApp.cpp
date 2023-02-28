@@ -33,6 +33,8 @@ void ofApp::draw() {
     ofDrawBitmapString("Song Progress: " + ofToString(percent) + "%", 0, 30);
     ofDrawBitmapString("Press 'd' to change song!", 0, 45);
 
+    ofDrawBitmapString("Volume: "+ ofToString(sound.getVolume() * 100) + " %", 0, 70); //added volume 
+
     // Mode Selection
     if (!playing) {
         ofDrawBitmapString("Press 'p' to play some music!", ofGetWidth() / 2 - 50, ofGetHeight() / 2);
@@ -115,6 +117,17 @@ void ofApp::keyPressed(int key) {
             sound.play();
             song = '6';
         }
+
+    case '=': // raises the volume :)
+        if (sound.getVolume() < 1.0) { sound.setVolume(sound.getVolume() + 0.1); }
+        else if ( sound.getVolume() == 1.0) { break; }
+        break;
+    
+    case '-': // lowers the volume :/ not working properly
+        if (sound.getVolume() > 0.0) { sound.setVolume(sound.getVolume() - 0.1); }
+        if (sound.getVolume() < 0) sound.setVolume(0);
+        break;
+
     case '1':
         mode = '1';
         break;
