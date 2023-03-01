@@ -14,6 +14,7 @@ class ofApp : public ofBaseApp {
     bool pause = false;
     char song = '6';
     bool loop = false;
+    bool repeat = true;
 
     int cur_x, cur_y = 0;
     float sound_length;

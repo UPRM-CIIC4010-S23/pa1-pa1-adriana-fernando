@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup() {
     sound.load("beat.wav");           // Loads a sound file (in bin/data/)
-    sound.setLoop(true);              // Makes the song loop indefinitely
+    sound.setLoop(repeat);              // Makes the song loop indefinitely
     sound.setVolume(1);               // Sets the song volume
     ofSetBackgroundColor(36, 32, 56); // Sets the Background Color
 }
@@ -66,6 +66,12 @@ void ofApp::draw() {
             sound.play();
             song = '6';
         }
+    }
+
+    if (repeat) {
+        sound.setLoop(true);
+    } else {
+        sound.setLoop(false);
     }
     // ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
 }
@@ -131,6 +137,16 @@ void ofApp::keyPressed(int key) {
             break;
         } else {
             loop = true;
+        }
+        break;
+    case 'r':
+        if (repeat) {
+            repeat = false;
+        } else {
+            repeat = true;
+            if (progress == 0) {
+                sound.play();
+            }
         }
         break;
     case 'd': // When pressing 'd' changes song
