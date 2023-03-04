@@ -31,9 +31,9 @@ void ofApp::draw() {
     float pos = playing ? progress : lastPos;
     int percent = pos * 100;
     ofDrawBitmapString("Song Progress: " + ofToString(percent) + "%", 0, 30);
-    ofDrawBitmapString("Press 'd' to change song!", 0, 45);
-
+    ofDrawBitmapString("Press 'd' to change song!", 0, 50);
     ofDrawBitmapString("Volume: "+ ofToString(sound.getVolume() * 100) + " %", 0, 70); //added volume 
+
 
     // Mode Selection
     if (!playing) {
@@ -66,6 +66,8 @@ void ofApp::draw() {
             sound.play();
             song = '6';
         }
+
+
     }
 
     if (repeat) {
@@ -73,7 +75,14 @@ void ofApp::draw() {
     } else {
         sound.setLoop(false);
     }
-    // ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
+
+     for (int l = 0; l < percent ; l ++) { //draws progress bar :)
+        ofDrawRectangle(l * ofGetWidth() , 90, percent*ofGetWidth()/98, 10);
+     }
+    
+
+    
+    //ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
 }
 
 void ofApp::drawMode1(vector<float> amplitudes) {
