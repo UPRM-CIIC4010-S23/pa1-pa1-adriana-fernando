@@ -30,6 +30,7 @@ void ofApp::draw() {
 
     float pos = playing ? progress : lastPos;
     int percent = pos * 100;
+    ofDrawBitmapString("Selected Mode: " + selectedMode, 350, 15);
     ofDrawBitmapString("Song Progress: " + ofToString(percent) + "%", 0, 30);
     ofDrawBitmapString("Press 'd' to change song!", 0, 50);
     ofDrawBitmapString("Volume: "+ ofToString(sound.getVolume() * 100) + " %", 0, 70); //added volume 
@@ -46,6 +47,16 @@ void ofApp::draw() {
         drawMode2(amplitudes);
     } else if (mode == '3') {
         drawMode3(amplitudes);
+    }
+
+    if (loop == true) { // indicator of which mode is currently selected
+        selectedMode = "LOOP";
+    } else if (repeat == true) {
+        selectedMode = "REPEAT";
+    } else if (shuffle == true) {
+        selectedMode = "SHUFFLE";
+    } else {
+        selectedMode = "NONE";
     }
 
     if (loop) {
@@ -161,14 +172,17 @@ void ofApp::keyPressed(int key) {
         if (loop) {
             loop = false;
             break;
-        } else {
+        } else if (repeat == false && shuffle == false) {
             loop = true;
+            if (progress == 0) {
+                sound.play();
+            }
         }
         break;
     case 'r': // repeats song
         if (repeat) {
             repeat = false;
-        } else {
+        } else if (loop == false && shuffle == false) {
             repeat = true;
             if (progress == 0) {
                 sound.play();
@@ -178,7 +192,7 @@ void ofApp::keyPressed(int key) {
     case 'b': // shuffles songs
         if (shuffle) {
             shuffle = false;
-        } else {
+        } else if (loop == false && repeat == false) {
             shuffle = true;
         }
         break;

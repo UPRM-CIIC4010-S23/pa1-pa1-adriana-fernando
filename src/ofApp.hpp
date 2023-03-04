@@ -16,6 +16,7 @@ class ofApp : public ofBaseApp {
     bool loop = false;
     bool repeat = true;
     bool shuffle = false;
+    string selectedMode;
 
     int cur_x, cur_y = 0;
     float sound_length;
