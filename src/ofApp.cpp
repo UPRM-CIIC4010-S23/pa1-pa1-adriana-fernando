@@ -73,6 +73,23 @@ void ofApp::draw() {
     } else {
         sound.setLoop(false);
     }
+
+    if (shuffle && progress == 0) {
+            int random = ofRandom(6, 10);
+            if (random == 6) {
+                sound.load("beat.wav");
+                sound.play();
+            } else if (random == 7) {
+                sound.load("geesebeat.wav");
+                sound.play();
+            } else if (random == 8) {
+                sound.load("pigeon-coo.wav");
+                sound.play();
+            } else if (random == 9) {
+                sound.load("rock-song.wav");
+                sound.play();
+            }
+        }
     // ofDrawBitmapString("Current Mouse Position: " + ofToString(cur_x) + ", " + ofToString(cur_y), 0, 30);
 }
 
@@ -124,14 +141,14 @@ void ofApp::keyPressed(int key) {
         }
         playing = !playing;
         break;
-    case 'a':
+    case 'a': // pauses visualizer
         if (pause) {
             pause = false;
         } else {
             pause = true;
         }
         break;
-    case 'l':
+    case 'l': // loops music
         if (loop) {
             loop = false;
             break;
@@ -139,7 +156,7 @@ void ofApp::keyPressed(int key) {
             loop = true;
         }
         break;
-    case 'r':
+    case 'r': // repeats song
         if (repeat) {
             repeat = false;
         } else {
@@ -147,6 +164,13 @@ void ofApp::keyPressed(int key) {
             if (progress == 0) {
                 sound.play();
             }
+        }
+        break;
+    case 'b': // shuffles songs
+        if (shuffle) {
+            shuffle = false;
+        } else {
+            shuffle = true;
         }
         break;
     case 'd': // When pressing 'd' changes song
