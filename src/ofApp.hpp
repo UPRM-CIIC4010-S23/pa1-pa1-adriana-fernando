@@ -17,6 +17,8 @@ class ofApp : public ofBaseApp {
     bool repeat = true;
     bool shuffle = false;
     string selectedMode;
+    bool dragging = false;
+    double progressPos;
 
     int cur_x, cur_y = 0;
     float sound_length;
