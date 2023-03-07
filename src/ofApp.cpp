@@ -88,7 +88,7 @@ void ofApp::draw() {
     }
 
      for (int l = 0; l < percent ; l ++) { //draws progress bar :)
-        ofDrawRectangle(l * ofGetWidth() , 90, percent*ofGetWidth()/98, 10);
+        ofDrawRectangle(l * ofGetWidth() , 90, percent*ofGetWidth()/98, 20);
      }
     
 
@@ -253,14 +253,25 @@ void ofApp::mouseMoved(int x, int y) {
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
+    if (dragging) {
+        sound.setPosition((progressPos) / ofGetWidth());
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
+    if (button == 0) {
+        if (cur_x >= 0 && cur_x <= ofGetWidth() &&
+        cur_y >= 90 && cur_y <= 110) {
+            dragging = true;
+            progressPos = cur_x;
+        }
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
+    dragging = false;
 }
 
 //--------------------------------------------------------------
