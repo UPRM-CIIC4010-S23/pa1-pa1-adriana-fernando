@@ -132,10 +132,32 @@ void ofApp::drawMode2(vector<float> amplitudes) {
 }
 
 void ofApp::drawMode3(vector<float> amplitudes) {
-    ofSetColor(256); // This resets the color of the "brush" to white
-    ofDrawBitmapString("Rectangle Width Visualizer", 0, 15);
-    // YOUR CODE HERE
+
+    ofSetColor(255, 191, 0); // draws the parts of the wings
+    ofDrawCircle((ofGetWidth()/2)-170, (ofGetHeight()/2)-100, 200); // upper left wing
+    ofDrawCircle((ofGetWidth()/2)+250, (ofGetHeight()/2)-100, 200); // upper right wing
+    ofDrawCircle((ofGetWidth()/2)-20, (ofGetHeight()/2)+130, 130);  // lower left wing
+    ofDrawCircle((ofGetWidth()/2)+100, (ofGetHeight()/2)+130, 130); // lower right wing
+
+
+    ofSetLineWidth(5); 
+    ofSetColor(256);
+    ofDrawBitmapString("Butterfly Visualizer", 0, 15);
+    int bands = amplitudes.size();
+    for (int i = 0; i < bands; i++) {
+        ofSetColor((bands - i) * 10 % 255, 191, 0);
+
+        ofDrawCircle((ofGetWidth()/2)-180, (ofGetHeight()/2)-100, amplitudes[0] / (i + 1.5)); // upper left wing
+        ofDrawCircle((ofGetWidth()/2)+260, (ofGetHeight()/2)-100, amplitudes[0] / (i + 1.5)); // upper right wing
+        ofDrawCircle((ofGetWidth()/2)-15, (ofGetHeight()/2)+130, amplitudes[0] / (i + 2.5));  // lower left wing
+        ofDrawCircle((ofGetWidth()/2)+105, (ofGetHeight()/2)+130, amplitudes[0] / (i + 2.5)); // lower right wing
+
+    }
+    ofSetColor(34, 139, 34);
+    ofDrawRectRounded(ofGetWidth()/2 , ofGetHeight()/4 , (ofGetWidth()/32) + 50 , (ofGetHeight()/2) + 50, 20); // draws the butterfly's body
+
     ofSetBackgroundColor(144, 238, 144); // Background color for mode 3
+
 }
 
 //--------------------------------------------------------------

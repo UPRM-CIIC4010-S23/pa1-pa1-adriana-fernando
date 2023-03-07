@@ -14,4 +14,11 @@
         "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt -g && $dir$fileNameWithoutExt"
     },
     "terminal.explorerKind": "external",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "algorithm": "cpp",
+        "mutex": "cpp",
+        "stop_token": "cpp",
+        "condition_variable": "cpp"
+    },
 }
